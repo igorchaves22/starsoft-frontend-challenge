@@ -1,5 +1,6 @@
 import { Footer, Header, Main, PageContainer, ScrollToTopButton } from "~components";
 import { Children } from "~types";
+import "~styles";
 
 export default function RootLayout({ children }: Children) {
     return (
