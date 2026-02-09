@@ -1,0 +1,101 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/mixins" as mixins;
+@use "../../styles/components";
+
+.cart-list {
+    @extend %grid-box;
+
+    list-style: none;
+    grid-auto-rows: auto;
+
+    &__ {
+        &box {
+            @extend %flex-box;
+
+            &-- {
+                &card {
+                    @extend %grid-box;
+
+                    height: auto;
+                    padding: variables.$spacing-5;
+                    border-radius: variables.$radius;
+                    grid-template-rows: repeat(2, min-content);
+                    align-self: stretch;
+                    background-color: variables.$color-surface-light;
+                    animation: zoomIn 1s ease both;
+                }
+
+                &price {
+                    width: max-content;
+                    flex-wrap: nowrap;
+                    column-gap: variables.$spacing-3;
+                }
+
+                &controls {
+                    justify-content: space-around;
+                }
+
+                &quantity {
+                    width: max-content;
+                    padding: variables.$spacing-3 variables.$spacing-6;
+                    border-radius: variables.$radius;
+                    flex-wrap: nowrap;
+                    background-color: variables.$color-surface-dark;
+                }
+            }
+        }
+
+        &image {
+            width: variables.$icon-size-lg;
+            height: variables.$icon-size-lg;
+
+            &--item {
+                width: min(100%, 12rem);
+                height: min(100%, 12rem);
+                border-radius: variables.$radius;
+            }
+        }
+
+        &typography {
+            @extend %typography;
+
+            color: variables.$color-secondary;
+            font-weight: 300;
+            font-size: variables.$font-size-xs;
+
+            &--name {
+                color: variables.$color-primary;
+                font-weight: 500;
+                font-size: variables.$font-size-base;
+            }
+        }
+
+        &button {
+            @extend %button;
+
+            &--trash {
+                padding: clamp(variables.$spacing-2, 0.5vw, variables.$spacing-3);
+                border-radius: 100%;
+                background-color: variables.$color-brand;
+                box-shadow: variables.$shadow-interactive;
+                transition: all 0.15s ease-out;
+
+                &:hover {
+                    background-color: variables.$color-interactive;
+
+                    & > * {
+                        transform: scale(1.1);
+                    }
+                }
+
+                & > * {
+                    transition: transform 0.15s ease-out;
+                }
+            }
+        }
+    }
+
+    @media (width > variables.$breakpoint-base) {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    }
+}

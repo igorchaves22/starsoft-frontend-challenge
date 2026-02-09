@@ -1,0 +1,72 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/mixins" as mixins;
+@use "../../styles/components";
+
+.cart-content {
+    @extend %page-layout;
+
+    @include mixins.box;
+
+    grid-template-rows: 1fr;
+    flex-direction: column;
+    flex-grow: 1;
+    align-content: start;
+
+    &__ {
+        &box {
+            @extend %flex-box;
+
+            &-- {
+                &main {
+                    height: auto;
+                    align-self: stretch;
+                    align-content: space-between;
+                }
+
+                &form {
+                    width: min(100%, 28rem);
+                    justify-content: space-between;
+                }
+
+                &price {
+                    width: max-content;
+                }
+
+                &message {
+                    flex-direction: column;
+                    row-gap: clamp(variables.$spacing-10, 2vw, variables.$spacing-14);
+                }
+            }
+        }
+
+        &icon {
+            width: variables.$icon-size-lg;
+            height: variables.$icon-size-lg;
+        }
+
+        &typography {
+            @extend %typography;
+
+            width: fit-content;
+            font-weight: 700;
+            font-size: variables.$font-size-xs;
+        }
+
+        &link {
+            @extend %link;
+
+            width: fit-content;
+            padding: clamp(variables.$spacing-3, 1vw, variables.$spacing-4)
+                clamp(variables.$spacing-7, 1vw, variables.$spacing-10);
+            border-radius: variables.$radius;
+            background-color: variables.$color-brand;
+            box-shadow: variables.$shadow-interactive;
+            font-size: variables.$font-size-base;
+            transition: background-color 0.15s ease-out;
+
+            &:hover {
+                background-color: variables.$color-interactive;
+            }
+        }
+    }
+}
