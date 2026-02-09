@@ -16,6 +16,13 @@
     padding: variables.$spacing-5;
 }
 
+%page-layout {
+    @include mixins.grid;
+    @include mixins.flow;
+
+    grid-template-columns: min(100%, variables.$max-layout);
+}
+
 %flex-box {
     @include mixins.box;
     @include mixins.flex;

@@ -1,0 +1,17 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/components";
+
+.footer {
+    @extend %page-blocks;
+    @extend %page-layout;
+
+    margin-top: auto;
+
+    &__typography {
+        @extend %typography;
+
+        color: variables.$color-secondary;
+        font-weight: 200;
+        font-size: variables.$font-size-xs;
+    }
+}
