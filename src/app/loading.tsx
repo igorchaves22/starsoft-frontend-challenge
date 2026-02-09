@@ -1,7 +1,5 @@
+import { Loader } from "~components";
+
 export default function LoadingPage() {
-    return (
-        <div>
-            <p>Loading page</p>
-        </div>
-    );
+    return <Loader />;
 }

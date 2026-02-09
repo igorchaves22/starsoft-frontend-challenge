@@ -39,3 +39,12 @@
         transform: translate3d(0, 125rem, 0) scaleY(3);
     }
 }
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

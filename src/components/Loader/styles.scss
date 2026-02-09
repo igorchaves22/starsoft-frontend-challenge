@@ -1,0 +1,10 @@
+@use "../../styles/variables" as variables;
+
+.loader {
+    width: min(100%, 8rem);
+    aspect-ratio: 1;
+    border: variables.$line-base solid variables.$color-brand;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+}
