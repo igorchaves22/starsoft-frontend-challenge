@@ -5,3 +5,4 @@ export { ScrollToTopButton } from "./ScrollToTopButton";
 export { Footer } from "./Footer";
 export { QueryProvider } from "./QueryProvider";
 export { StoreProvider } from "./StoreProvider";
+export { Icon } from "./Icon";

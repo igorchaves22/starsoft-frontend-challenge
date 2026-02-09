@@ -1,0 +1,31 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/tokens" as tokens;
+@use "../../styles/mixins" as mixins;
+
+.icon {
+    @include mixins.box($width: max-content);
+    @include mixins.layer;
+    @include mixins.flex($shrink: 0);
+
+    display: block;
+    color: variables.$color-primary;
+    font-size: variables.$icon-size-base;
+
+    &-- {
+        &color- {
+            @each $color, $value in tokens.$color-token {
+                &#{$color} {
+                    color: $value;
+                }
+            }
+        }
+
+        &size- {
+            @each $size, $value in tokens.$icon-size-token {
+                &#{$size} {
+                    font-size: $value;
+                }
+            }
+        }
+    }
+}
