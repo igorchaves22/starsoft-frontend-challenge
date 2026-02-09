@@ -1,0 +1,8 @@
+@use "../../styles/components";
+
+.main {
+    @extend %page-blocks;
+
+    height: auto;
+    flex-grow: 1;
+}

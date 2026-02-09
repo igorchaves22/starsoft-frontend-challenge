@@ -8,6 +8,14 @@
     min-height: 100dvh;
 }
 
+%page-blocks {
+    @include mixins.box($bg-color: background);
+    @include mixins.flex($direction: column);
+    @include mixins.flow;
+
+    padding: variables.$spacing-5;
+}
+
 %flex-box {
     @include mixins.box;
     @include mixins.flex;
