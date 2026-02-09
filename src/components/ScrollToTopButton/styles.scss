@@ -1,0 +1,39 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/mixins" as mixins;
+@use "../../styles/components";
+
+.scroll-to-top-button {
+    @extend %button;
+
+    @include mixins.layer($position: fixed, $z: 10);
+
+    padding: variables.$spacing-2;
+    border-radius: 100%;
+    inset: auto max(variables.$spacing-5, calc((100vw - #{variables.$max-layout}) / 2)) variables.$spacing-5 auto;
+    background-color: variables.$color-brand;
+    box-shadow: variables.$shadow-interactive;
+    transition: all 0.15s ease-out;
+
+    &:hover {
+        background-color: variables.$color-interactive;
+        transform: translate(-#{variables.$spacing-3}, -#{variables.$spacing-3});
+
+        & > * {
+            transform: scale(1.2);
+        }
+    }
+
+    & > * {
+        transition: transform 0.15s ease-out;
+    }
+
+    &-- {
+        &show {
+            animation: bounceInUp 1s ease;
+        }
+
+        &hide {
+            animation: bounceOutDown 1.25s ease;
+        }
+    }
+}

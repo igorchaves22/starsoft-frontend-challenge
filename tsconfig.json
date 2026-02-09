@@ -18,6 +18,8 @@
         "paths": {
             "~assets/*": ["./assets/*"],
             "~components": ["./components"],
+            "~contexts": ["./contexts"],
+            "~hooks": ["./hooks"],
             "~store": ["./store"],
             "~styles": ["./styles/main.scss"],
             "~types": ["./types"],

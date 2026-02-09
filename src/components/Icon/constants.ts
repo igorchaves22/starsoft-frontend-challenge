@@ -1,8 +1,9 @@
 "use client";
 
-import { BagIcon, XIcon } from "@phosphor-icons/react";
+import { BagIcon, CaretUpIcon, XIcon } from "@phosphor-icons/react";
 
 export const ICONS = {
     X: XIcon,
-    Bag: BagIcon
+    Bag: BagIcon,
+    CaretUp: CaretUpIcon
 } as const;
