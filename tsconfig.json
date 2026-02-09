@@ -19,7 +19,8 @@
             "~components": ["./components"],
             "~store": ["./store"],
             "~styles": ["./styles/main.scss"],
-            "~types": ["./types"]
+            "~types": ["./types"],
+            "~utils": ["./utils"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],

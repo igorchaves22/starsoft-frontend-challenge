@@ -1,0 +1,59 @@
+@use "./variables" as variables;
+
+$spacing-token: (
+    1: variables.$spacing-1,
+    2: variables.$spacing-2,
+    3: variables.$spacing-3,
+    4: variables.$spacing-4,
+    5: variables.$spacing-5,
+    6: variables.$spacing-6,
+    7: variables.$spacing-7,
+    8: variables.$spacing-8,
+    9: variables.$spacing-9,
+    10: variables.$spacing-10,
+    11: variables.$spacing-11,
+    12: variables.$spacing-12,
+    13: variables.$spacing-13,
+    14: variables.$spacing-14,
+    15: variables.$spacing-15,
+    max: variables.$spacing-max
+);
+
+$color-token: (
+    brand: variables.$color-brand,
+    background: variables.$color-background,
+    primary: variables.$color-primary,
+    secondary: variables.$color-secondary,
+    surface: variables.$color-surface,
+    surface-light: variables.$color-surface-light,
+    surface-dark: variables.$color-surface-dark,
+    interactive: variables.$color-interactive
+);
+
+$font-weight-token: (
+    thin: 100,
+    extra-light: 200,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semi-bold: 600,
+    bold: 700,
+    extra-bold: 800,
+    black: 900
+);
+
+$font-size-token: (
+    xs: variables.$font-size-xs,
+    sm: variables.$font-size-sm,
+    base: variables.$font-size-base,
+    lg: variables.$font-size-lg,
+    xl: variables.$font-size-xl,
+    "2xl": variables.$font-size-2xl,
+    "3xl": variables.$font-size-3xl
+);
+
+$icon-size-token: (
+    sm: variables.$icon-size-sm,
+    base: variables.$icon-size-base,
+    lg: variables.$icon-size-lg
+);

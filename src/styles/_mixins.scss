@@ -1,0 +1,130 @@
+@use "sass:map";
+@use "sass:meta";
+@use "sass:math";
+@use "sass:list";
+@use "./variables" as variables;
+@use "./tokens" as tokens;
+
+$spacing-keys: map.keys(tokens.$spacing-token);
+$color-keys: map.keys(tokens.$color-token);
+
+@mixin validate($params...) {
+    @each $name, $value, $type-allowed, $values-allowed in $params {
+        $value-type: meta.type-of($value);
+        $is-valid-type: false;
+        $is-valid-value: list.index($values-allowed, $value) != null;
+
+        @if $type-allowed == number {
+            $is-valid-type: $value-type == number and math.is-unitless($value);
+        } @else if $type-allowed != null {
+            $is-valid-type: $value-type == $type-allowed;
+        }
+        @if not($is-valid-type or $is-valid-value) {
+            $message: "Invalid value for #{$name}. Expected";
+
+            @if $type-allowed {
+                $message: $message + " type `#{$type-allowed}` or";
+            }
+
+            @error $message + " one of `#{$values-allowed}`. Received: `#{$value}`";
+        }
+    }
+}
+
+@mixin box($width: 100%, $height: min-content, $bg-color: transparent) {
+    @include validate(
+        ("$width", $width, number, (max-content, 100%)),
+        ("$height", $height, number, (min-content, auto)),
+        ("$bg-color", $bg-color, null, list.join((transparent), $color-keys, comma))
+    );
+
+    $resolved-width: $width;
+    $resolved-height: $height;
+    $resolved-bg-color: $bg-color;
+
+    @if meta.type-of($resolved-width) == "number" and math.is-unitless($resolved-width) {
+        $resolved-width: #{$resolved-width}rem;
+    }
+    @if meta.type-of($resolved-height) == "number" and math.is-unitless($resolved-height) {
+        $resolved-height: #{$resolved-height}rem;
+    }
+    @if $resolved-bg-color == transparent {
+        $resolved-bg-color: transparent;
+    } @else {
+        $resolved-bg-color: map.get(tokens.$color-token, $resolved-bg-color);
+    }
+
+    width: $resolved-width;
+    height: $resolved-height;
+    background-color: $resolved-bg-color;
+}
+
+@mixin layer($position: relative, $z: 0) {
+    @include validate(("$position", $position, null, (relative, absolute, fixed)), ("$z", $z, number));
+
+    position: $position;
+    inset: 0;
+    z-index: $z;
+}
+
+@mixin flex($grow: 0, $shrink: 1, $basis: auto, $direction: row, $wrap: wrap) {
+    @include validate(
+        ("$grow", $grow, number),
+        ("$shrink", $shrink, number),
+        ("$basis", $basis, number, (auto)),
+        ("$direction", $direction, null, (row, column)),
+        ("$wrap", $wrap, null, (nowrap, wrap))
+    );
+
+    $resolved-basis: $basis;
+
+    @if meta.type-of($resolved-basis) == "number" {
+        $resolved-basis: #{$resolved-basis}rem;
+    }
+
+    display: flex;
+    flex: $grow $shrink $resolved-basis;
+    flex-flow: $direction $wrap;
+}
+
+@mixin grid {
+    display: grid;
+    grid: min-content / 100%;
+}
+
+@mixin flow($gap: 5, $content: center, $items: center) {
+    @include validate(
+        ("$gap", $gap, null, list.join((0), $spacing-keys, comma)),
+        ("$content", $content, null, (center)),
+        ("$items", $items, null, (center))
+    );
+
+    $resolved-gap: $gap;
+
+    @if $resolved-gap == 0 {
+        $resolved-gap: 0;
+    } @else {
+        $resolved-gap: map.get(tokens.$spacing-token, $resolved-gap);
+    }
+
+    gap: $resolved-gap;
+    place-content: $content;
+    place-items: $items;
+}
+
+@mixin typography($color: primary, $weight: regular, $size: sm, $align: center) {
+    @include validate(
+        ("$color", $color, null, $color-keys),
+        ("$weight", $weight, null, map.keys(tokens.$font-weight-token)),
+        ("$size", $size, null, map.keys(tokens.$font-size-token)),
+        ("$align", $align, null, (start, end, center, justify))
+    );
+
+    $resolved-color: map.get(tokens.$color-token, $color);
+    $resolved-weight: map.get(tokens.$font-weight-token, $weight);
+    $resolved-size: map.get(tokens.$font-size-token, $size);
+
+    color: $resolved-color;
+    font: normal $resolved-weight $resolved-size / normal variables.$font-family;
+    text-align: $align;
+}

@@ -1,0 +1,34 @@
+@use "../styles/variables" as variables;
+@use "../styles/mixins" as mixins;
+
+%flex-box {
+    @include mixins.box;
+    @include mixins.flex;
+    @include mixins.flow;
+}
+
+%grid-box {
+    @include mixins.box;
+    @include mixins.grid;
+    @include mixins.flow;
+}
+
+%button {
+    @include mixins.box($width: max-content);
+    @include mixins.typography;
+
+    border: none;
+    cursor: pointer;
+}
+
+%typography {
+    @include mixins.box;
+    @include mixins.typography;
+}
+
+%link {
+    @include mixins.box;
+    @include mixins.typography;
+
+    text-decoration: none;
+}
