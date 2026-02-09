@@ -26,6 +26,9 @@ export const ProductsList = () => {
                         className="product-list__image"
                     />
                     <p className="product-list__typography product-list__typography--name">{product.name}</p>
+                    <p className="product-list__typography product-list__typography--description">
+                        {product.description}
+                    </p>
                     <div className="product-list__box product-list__box--price">
                         <Image
                             src={ethSvg}
