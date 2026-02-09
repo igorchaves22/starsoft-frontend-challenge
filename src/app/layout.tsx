@@ -1,4 +1,4 @@
-import { Footer, Header, Main, PageContainer, ScrollToTopButton } from "~components";
+import { Footer, Header, Main, PageContainer, QueryProvider, ScrollToTopButton } from "~components";
 import { Children } from "~types";
 import "~styles";
 
@@ -7,8 +7,10 @@ export default function RootLayout({ children }: Children) {
         <html>
             <body>
                 <PageContainer>
-                    <Header />
-                    <Main>{children}</Main>
+                    <QueryProvider>
+                        <Header />
+                        <Main>{children}</Main>
+                    </QueryProvider>
                     <ScrollToTopButton />
                     <Footer />
                 </PageContainer>
