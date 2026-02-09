@@ -1,0 +1,49 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/mixins" as mixins;
+@use "../../styles/components";
+
+.header {
+    @extend %page-blocks;
+    @extend %page-layout;
+
+    border-bottom: variables.$line-sm solid variables.$color-secondary;
+    margin-bottom: auto;
+    padding-block: variables.$spacing-3;
+
+    &__ {
+        &box {
+            @extend %flex-box;
+
+            flex-wrap: nowrap;
+            column-gap: variables.$spacing-9;
+            justify-content: space-between;
+        }
+
+        &link {
+            @extend %link;
+
+            @include mixins.flex($wrap: nowrap);
+            @include mixins.flow;
+
+            width: max-content;
+            column-gap: variables.$spacing-3;
+            transition: transform 0.2s ease-out;
+
+            &:hover {
+                transform: scale(1.025);
+
+                & > * {
+                    transition: color 0.2s ease-out;
+
+                    color: variables.$color-interactive;
+                }
+            }
+        }
+
+        &image {
+            @include mixins.box($width: 7);
+
+            object-fit: contain;
+        }
+    }
+}

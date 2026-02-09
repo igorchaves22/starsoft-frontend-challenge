@@ -16,6 +16,7 @@
         "plugins": [{ "name": "next" }],
         "baseUrl": "./src",
         "paths": {
+            "~assets/*": ["./assets/*"],
             "~components": ["./components"],
             "~store": ["./store"],
             "~styles": ["./styles/main.scss"],
