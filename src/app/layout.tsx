@@ -1,4 +1,13 @@
-import { Footer, Header, Main, PageContainer, QueryProvider, ScrollToTopButton, StoreProvider } from "~components";
+import {
+    CartHydrator,
+    Footer,
+    Header,
+    Main,
+    PageContainer,
+    QueryProvider,
+    ScrollToTopButton,
+    StoreProvider
+} from "~components";
 import { FooterContextProvider, QueryControlsContextProvider, ViewportContextProvider } from "~contexts";
 import { Children } from "~types";
 import { poppins } from "~utils";
@@ -12,6 +21,7 @@ export default function RootLayout({ children }: Children) {
                     <PageContainer>
                         <QueryProvider>
                             <StoreProvider>
+                                <CartHydrator />
                                 <Header />
                                 <QueryControlsContextProvider>
                                     <Main>{children}</Main>

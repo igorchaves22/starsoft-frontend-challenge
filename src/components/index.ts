@@ -11,3 +11,4 @@ export { CatalogContent } from "./CatalogContent";
 export { ProductsList } from "./ProductsList";
 export { ActionButton } from "./ActionButton";
 export { StatusPageMessage } from "./StatusPageMessage";
+export { CartHydrator } from "./CartHydrator";

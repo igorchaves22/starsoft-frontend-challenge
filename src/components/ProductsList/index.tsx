@@ -5,9 +5,11 @@ import Image from "next/image";
 import { useContext } from "react";
 import ethSvg from "~assets/svg/eth.svg";
 import { QueryControlsContext } from "~contexts";
+import { useCart } from "~hooks";
 import "./styles.scss";
 
 export const ProductsList = () => {
+    const { handleClickAddProductToCart } = useCart();
     const { data } = useContext(QueryControlsContext);
 
     return (
@@ -40,7 +42,10 @@ export const ProductsList = () => {
                             {Math.ceil(parseFloat(product.price))} ETH
                         </span>
                     </div>
-                    <ActionButton text="COMPRAR" />
+                    <ActionButton
+                        onClick={() => handleClickAddProductToCart(product)}
+                        text="COMPRAR"
+                    />
                 </li>
             ))}
         </ul>
