@@ -16,6 +16,7 @@
         "plugins": [{ "name": "next" }],
         "baseUrl": "./src",
         "paths": {
+            "~components": ["./components"],
             "~types": ["./types"]
         }
     },
