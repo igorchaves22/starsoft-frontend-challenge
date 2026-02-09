@@ -1,0 +1,20 @@
+@use "./styles/variables" as variables;
+@use "./styles/components";
+
+html {
+    body {
+        &::-webkit-scrollbar {
+            width: 0.5rem;
+            background-color: variables.$color-background;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: variables.$spacing-max;
+            background-color: variables.$color-brand;
+
+            &:hover {
+                background-color: variables.$color-interactive;
+            }
+        }
+    }
+}

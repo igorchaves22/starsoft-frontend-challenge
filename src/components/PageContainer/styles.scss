@@ -1,0 +1,8 @@
+@use "../../styles/mixins" as mixins;
+@use "../../styles/components";
+
+.page-container {
+    @extend %viewport-container;
+
+    @include mixins.flex($direction: column);
+}
