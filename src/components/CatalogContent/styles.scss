@@ -1,0 +1,77 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/mixins" as mixins;
+@use "../../styles/components";
+
+.catalog-content {
+    @extend %page-layout;
+
+    width: 100%;
+    height: auto;
+    flex-grow: 1;
+    align-content: start;
+
+    &__ {
+        &box {
+            @extend %flex-box;
+
+            gap: variables.$spacing-3;
+
+            &-- {
+                &form {
+                    justify-content: end;
+                }
+
+                &button {
+                    width: max-content;
+                    border-radius: variables.$radius;
+                    column-gap: 0;
+                }
+
+                &select {
+                    width: max-content;
+                    justify-content: end;
+                }
+
+                &content {
+                    row-gap: variables.$spacing-12;
+                }
+            }
+        }
+
+        &typography {
+            @extend %typography;
+
+            text-align: end;
+        }
+
+        &button {
+            @extend %button;
+
+            padding: variables.$spacing-1 variables.$spacing-3;
+            background-color: variables.$color-brand;
+
+            &:first-child {
+                border-top-left-radius: variables.$radius;
+                border-bottom-left-radius: variables.$radius;
+            }
+
+            &:last-child {
+                border-top-right-radius: variables.$radius;
+                border-bottom-right-radius: variables.$radius;
+            }
+
+            &:disabled {
+                cursor: default;
+                background-color: variables.$color-surface;
+            }
+
+            &:not(:disabled) {
+                transition: all 0.2s ease-out;
+
+                &:hover {
+                    background-color: variables.$color-interactive;
+                }
+            }
+        }
+    }
+}

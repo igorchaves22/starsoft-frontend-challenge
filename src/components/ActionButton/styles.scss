@@ -1,0 +1,38 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/mixins" as mixins;
+@use "../../styles/components";
+
+.action-button {
+    @extend %button;
+
+    @include mixins.typography($weight: medium, $size: xs);
+
+    width: 100%;
+    padding: variables.$spacing-3;
+    border-radius: variables.$radius;
+    background-color: variables.$color-brand;
+    box-shadow: variables.$shadow-interactive;
+
+    &:disabled {
+        cursor: default;
+    }
+
+    &:not(:disabled) {
+        transition: all 0.2s ease-out;
+
+        &:hover {
+            background-color: variables.$color-interactive;
+        }
+    }
+
+    &-- {
+        &max {
+            width: min(100%, 12rem);
+        }
+
+        &dark {
+            background-color: variables.$color-surface-light;
+            box-shadow: variables.$shadow-surface;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/mixins" as mixins;
+@use "../../styles/components";
+
+.product-list {
+    @extend %grid-box;
+
+    list-style: none;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+    grid-auto-rows: auto;
+
+    &__ {
+        &box {
+            @extend %flex-box;
+
+            &-- {
+                &card {
+                    @extend %grid-box;
+
+                    height: auto;
+                    border-radius: variables.$radius;
+                    padding: variables.$spacing-5;
+                    grid-template-rows: repeat(3, auto) 1fr;
+                    justify-items: start;
+                    align-self: stretch;
+                    background-color: variables.$color-surface-dark;
+                    animation: zoomIn 1s ease both;
+                }
+
+                &price {
+                    width: max-content;
+                    flex-wrap: nowrap;
+                    column-gap: variables.$spacing-3;
+                }
+            }
+        }
+
+        &typography {
+            @extend %typography;
+
+            &-- {
+                &name {
+                    font-weight: 600;
+                    text-align: start;
+                }
+
+                &price {
+                    font-size: variables.$font-size-xs;
+                }
+            }
+        }
+
+        &image {
+            width: 100%;
+            height: 100%;
+            border-radius: variables.$radius;
+        }
+
+        &icon {
+            width: variables.$icon-size-sm;
+            height: variables.$icon-size-sm;
+        }
+    }
+
+    @media (width > variables.$breakpoint-base) {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    }
+}
