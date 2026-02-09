@@ -17,6 +17,7 @@
         "baseUrl": "./src",
         "paths": {
             "~components": ["./components"],
+            "~styles": ["./styles/main.scss"],
             "~types": ["./types"]
         }
     },
