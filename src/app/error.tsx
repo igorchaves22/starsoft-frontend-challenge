@@ -1,9 +1,14 @@
 "use client";
 
+import { StatusPageMessage } from "~components";
+
 export default function ErrorPage() {
     return (
-        <div>
-            <p>Global - error page</p>
-        </div>
+        <StatusPageMessage
+            title="Algo deu errado"
+            message="Ops! Algo deu errado."
+            subMessage="Parece que esta área do site está fora de alcance por enquanto."
+            link={{ href: "/", text: "Ir para página inicial" }}
+        />
     );
 }

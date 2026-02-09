@@ -1,0 +1,49 @@
+@use "../../styles/variables" as variables;
+@use "../../styles/components";
+
+.status-page-message {
+    @extend %page-layout;
+
+    &__ {
+        &box {
+            @extend %flex-box;
+
+            flex-direction: column;
+            gap: 0;
+
+            &--container {
+                row-gap: clamp(variables.$spacing-10, 2vw, variables.$spacing-14);
+            }
+        }
+
+        &typography {
+            @extend %typography;
+
+            color: variables.$color-secondary;
+            font-size: variables.$font-size-xs;
+
+            &--title {
+                color: variables.$color-brand;
+                font-weight: 700;
+                font-size: variables.$font-size-3xl;
+            }
+        }
+
+        &link {
+            @extend %link;
+
+            width: fit-content;
+            padding: clamp(variables.$spacing-3, 1vw, variables.$spacing-4)
+                clamp(variables.$spacing-7, 1vw, variables.$spacing-10);
+            border-radius: variables.$radius;
+            background-color: variables.$color-brand;
+            box-shadow: variables.$shadow-interactive;
+            font-size: variables.$font-size-base;
+            transition: background-color 0.15s ease-out;
+
+            &:hover {
+                background-color: variables.$color-interactive;
+            }
+        }
+    }
+}

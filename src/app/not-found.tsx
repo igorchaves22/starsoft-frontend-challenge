@@ -1,7 +1,12 @@
+import { StatusPageMessage } from "~components";
+
 export default function NotFound() {
     return (
-        <div>
-            <p>Global - Not found page</p>
-        </div>
+        <StatusPageMessage
+            title="404"
+            message="Ops! Parece que você se perdeu."
+            subMessage="Retorne à página inicial para começar de novo."
+            link={{ href: "/", text: "Ir para página inicial" }}
+        />
     );
 }
